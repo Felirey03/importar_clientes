@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Acción para abrir el wizard -->
+    <record id="action_importador_clientes" model="ir.actions.act_window">
+        <field name="name">Importar Clientes desde CSV</field>
+        <field name="res_model">importador.clientes.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Sube un archivo CSV con tus clientes para importarlos masivamente.
+            </p>
+            <p>
+                El asistente analizará el archivo y te mostrará:
+                <ul>
+                    <li>Vista previa de los datos</li>
+                    <li>Emails válidos e inválidos</li>
+                    <li>Nombres completos</li>
+                    <li>Teléfonos detectados</li>
+                </ul>
+                Luego podrás importar los clientes a Odoo de manera segura.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú en Contactos -->
+    <menuitem id="menu_importador_clientes"
+              name="Importar Clientes CSV"
+              parent="contacts.menu_contacts"
+              action="action_importador_clientes"
+              sequence="99"/>
+</odoo>

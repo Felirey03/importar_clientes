@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_importador_clientes_wizard" model="ir.ui.view">
+        <field name="name">importador.clientes.wizard.form</field>
+        <field name="model">importador.clientes.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Importar Clientes desde CSV">
+                <sheet>
+                    <group string="1. Selecciona archivo">
+                        <field name="archivo_csv" 
+                               filename="nombre_archivo"
+                               widget="binary"
+                               placeholder="Haz clic para seleccionar archivo..."/>
+                        <field name="nombre_archivo" invisible="1"/>
+                    </group>
+                    
+                    <group string="2. Configuración">
+                        <field name="separador" widget="radio"/>
+                        <field name="tiene_encabezados"/>
+                        <field name="tamanio_lote"/>
+                        <label for="tamanio_lote"/>
+                        <div class="text-muted">
+                            Archivos grandes se procesan en lotes para evitar errores
+                        </div>
+                    </group>
+                    
+                    <group string="3. Resultado" colspan="4">
+                        <field name="resultado" 
+                               readonly="1" 
+                               nolabel="1"
+                               widget="ace"
+                               options="{'mode': 'text', 'readonly': True}"/>
+                    </group>
+                </sheet>
+                
+                <footer>
+                    <button name="action_previsalizar" 
+                            string="Previsualizar" 
+                            type="object" 
+                            class="btn-primary"/>
+                    <button name="importar" 
+                            string="Importar Clientes" 
+                            type="object" 
+                            class="btn-success"/>
+                    <button string="Cancelar" 
+                            class="btn-secondary" 
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
